@@ -1,6 +1,9 @@
 --selecione produtos q tem 'churn' no nome
 
-SELECT * FROM produtos WHERE DescNomeProduto LIKE 'Botas%'
+SELECT * FROM produtos WHERE DescCategoriaProduto = 'botas'
+
+--LIKE 'Bota%'
+--LIKE '%ava' = termina com ava
 
 --WHERE DescNomeProduto IN('Botas de Força', 'Botas de Lava', 'Botas de Veludo')
 
