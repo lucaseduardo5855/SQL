@@ -1,1 +1,3 @@
---Selecione todas as transações 50 pontos
+--Selecione as transações 50pontos
+
+SELECT * from transacoes WHERE QtdePontos = 50
