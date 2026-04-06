@@ -1,0 +1,1 @@
+--Selecione todas as transações 50 pontos
