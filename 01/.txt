@@ -1,6 +1,8 @@
 --LIKE 'Bota%' = Inicia com Bota
 --LIKE '%ava' = termina com ava
 
+-- not like '%chapeu%' = Pego tudo menos chapeu
+
 IN = Seleciona varias colunas
 
 OR = Seleciona varias Colunas tb e filtra 
