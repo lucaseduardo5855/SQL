@@ -11,4 +11,5 @@ Podemos usar para Maior Igual o >= ou tb >
 AS = Renomear 
 
 substr = Pega de uma posição até outra posição exemplo DtCriacao,1,10 
+
 strftime = Pega mediante a documentação especificação de data ex: Mês do dado, o dia da semana daquele dado
