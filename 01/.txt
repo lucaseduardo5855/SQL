@@ -8,7 +8,7 @@ ex: --WHERE DescNomeProduto = 'Botas de Força'OR DescNomeProduto = 'Botas de La
 
 Podemos usar para Maior Igual o >= ou tb > 
 
-AS = Renomear ou Apelidar
+AS = Renomear 
 
 substr = Pega de uma posição até outra posição exemplo DtCriacao,1,10 
 strftime = Pega mediante a documentação especificação de data ex: Mês do dado, o dia da semana daquele dado
