@@ -5,7 +5,8 @@
 -- de 5001 a 10000 -> mago mestre
 -- +10001 -> mago supremo
 
-SELECT qtdePontos, idCliente, CASE 
+SELECT qtdePontos, idCliente,
+CASE 
   WHEN qtdePontos <= 500 THEN 'Ponei' 
   WHEN QtdePontos <= 1001 THEN 'Ponei Premium' 
   WHEN QtdePontos <= 5000 THEN 'Mago aprendiz'
@@ -23,5 +24,9 @@ CASE
   ELSE 0
 END AS flMago
 
-FROM clientes ORDER BY QtdePontos DESC
+FROM clientes 
+
+WHERE flMago = 1
+
+ORDER BY QtdePontos DESC
 

@@ -20,6 +20,6 @@ ORDER BY = Ordenando pelo
 ORDER BY DESC = Ordenado descrente (Mais novo pro mais antigo)
 ORDER BY ASC = Ordenado crescente (mais antigo pro mais novo)
 
-CASE = Caso
+CASE = Caso (Gera uma coluna nova)
 WHEN = Quando
 THEN = Então
