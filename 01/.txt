@@ -19,3 +19,7 @@ strftime = Pega mediante a documentação especificação de data ex: Mês do da
 ORDER BY = Ordenando pelo 
 ORDER BY DESC = Ordenado descrente (Mais novo pro mais antigo)
 ORDER BY ASC = Ordenado crescente (mais antigo pro mais novo)
+
+CASE = Caso
+WHEN = Quando
+THEN = Então
