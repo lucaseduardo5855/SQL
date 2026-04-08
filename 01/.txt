@@ -23,3 +23,10 @@ ORDER BY ASC = Ordenado crescente (mais antigo pro mais novo)
 CASE = Caso (Gera uma coluna nova)
 WHEN = Quando
 THEN = Então
+
+AGREGAÇÃO = Contagem, média, variância, minimo, máximo, etc
+Contagem de linha: count(*) = quantas linhas tem numa tabela?
+Contagem de linha distintas: count(distinc column)
+Soma: sum(column)
+Média: avg(column)
+Máximo: max(column)

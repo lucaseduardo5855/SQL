@@ -5,6 +5,9 @@ CASE
 WHEN QtdePontos <= 10 THEN 'Baixo'
 WHEN QtdePontos <= 500 THEN 'Médio'
 WHEN QtdePontos >= 500 THEN 'Alto'
+
 END AS Categorias 
+
 FROM transacoes 
+
 ORDER BY QtdePontos DESC
