@@ -1,4 +1,4 @@
-SELECT count(*), count(DISTINCT IdTransacao)
+SELECT count(*), count(DISTINCT IdTransacao), count(DISTINCT IdCliente)
 
 FROM transacoes 
 

@@ -32,3 +32,4 @@ Média: avg(column)
 Máximo: max(column)
 
 DISTINCT = Olha para todas as colunas e traz apenas valores distintos
+resumindo: ignora repetições antes de fazer contagem
