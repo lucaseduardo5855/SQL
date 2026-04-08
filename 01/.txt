@@ -30,3 +30,5 @@ Contagem de linha distintas: count(distinc column)
 Soma: sum(column)
 Média: avg(column)
 Máximo: max(column)
+
+DISTINCT = Olha para todas as colunas e traz apenas valores distintos
