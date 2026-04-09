@@ -2,11 +2,16 @@ SELECT Sum(QtdePontos),
 
   Sum(CASE
       WHEN QtdePontos > 0 THEN QtdePontos
-  END) AS QtdePontosPositivos,
+      END) AS QtdePontosPositivos,
 
   sum(CASE
     WHEN QtdePontos < 0 THEN QtdePontos
-  END) AS QtdePontosNegativos
+    ELSE 0
+    END) AS QtdePontosNegativos,
+
+   count(CASE
+    WHEN QtdePontos < 0 THEN QtdePontos
+    END) AS qtTransacaoNegativa
 
 FROM transacoes 
 

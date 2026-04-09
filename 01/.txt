@@ -38,3 +38,4 @@ ex: 09_count_distinct
 SUM = Soma (espreme o dado) por exemplo temos um case e usamos SUM para espremer os dados
 10_sum.sql 
 
+Count
