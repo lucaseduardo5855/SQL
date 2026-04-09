@@ -38,4 +38,12 @@ ex: 09_count_distinct
 SUM = Soma (espreme o dado) por exemplo temos um case e usamos SUM para espremer os dados
 10_sum.sql 
 
-Count
+COUNT (Contagem): Ex: quantas vezes (quantas linhas da tabela) o seu "segurança" deixou passar uma pontuação menor que zero. Resultado: aconteceram 522 transações negativas no mês.
+
+AVG = Média de cada linha 
+é a mesma coisa de pegar Sum(qtDepontos) / Count(IdCliente)
+
+Round = ARREDONDANR EX: Round(avg(qtDepontos),2) = arredonda para 433.91 o 91 é o 2
+
+MIN = Minimo ex: Min(qtDepontos)
+MAX = Maximo ex: Max(qtDepontos)
