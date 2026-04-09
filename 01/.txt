@@ -33,3 +33,6 @@ Máximo: max(column)
 
 DISTINCT = Olha para todas as colunas e traz apenas valores distintos
 resumindo: ignora repetições antes de fazer contagem
+ex: 09_count_distinct
+
+SUM
