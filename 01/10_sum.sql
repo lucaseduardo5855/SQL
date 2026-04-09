@@ -1,12 +1,12 @@
-SELECT IdTransacao, QtdePontos, 
+SELECT Sum(QtdePontos), 
 
-  CASE
+  Sum(CASE
       WHEN QtdePontos > 0 THEN QtdePontos
-  END AS QtdePontosPositivos,
+  END) AS QtdePontosPositivos,
 
-  CASE
+  sum(CASE
     WHEN QtdePontos < 0 THEN QtdePontos
-  END AS QtdePontosNegativos
+  END) AS QtdePontosNegativos
 
 FROM transacoes 
 

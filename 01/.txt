@@ -35,4 +35,6 @@ DISTINCT = Olha para todas as colunas e traz apenas valores distintos
 resumindo: ignora repetições antes de fazer contagem
 ex: 09_count_distinct
 
-SUM
+SUM = Soma (espreme o dado) por exemplo temos um case e usamos SUM para espremer os dados
+10_sum.sql 
+
