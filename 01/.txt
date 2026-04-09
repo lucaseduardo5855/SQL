@@ -40,6 +40,10 @@ SUM = Soma (espreme o dado) por exemplo temos um case e usamos SUM para espremer
 
 COUNT (Contagem): Ex: quantas vezes (quantas linhas da tabela) o seu "segurança" deixou passar uma pontuação menor que zero. Resultado: aconteceram 522 transações negativas no mês.
 
+Quer saber quantas pessoas preencheram um dado específico? COUNT(coluna) (Ignora NULL).
+
+Quer saber o tamanho total da sua tabela (quantos registros existem no total)? COUNT(*) (Conta tudo, não foge de NULL).
+
 AVG = Média de cada linha 
 é a mesma coisa de pegar Sum(qtDepontos) / Count(IdCliente)
 
