@@ -1,16 +1,16 @@
 -- SELECT IdProduto, count(*) FROM transacao_produto GROUP BY IdProduto
 
-SELECT IdCliente,
-      sum(QtdePontos),
-      count(IdTransacao)
+SELECT idCliente,
+        sum(QtdePontos),
+        count(IdTransacao)
 
-FROM transacoes 
-        
+FROM transacoes
+
 WHERE DtCriacao >= '2025-07-01' AND DtCriacao < '2025-08-01' 
 
-GROUP BY IdCliente
-HAVING sum(QtdePontos) >= 4000
+GROUP BY idCliente
+HAVING count(QtdePontos) > 10
 
-ORDER BY sum(QtdePontos) DESC
+ORDER BY sum(QtdePontos)
 
 LIMIT 10
