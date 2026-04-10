@@ -52,4 +52,7 @@ Round = ARREDONDANR EX: Round(avg(qtDepontos),2) = arredonda para 433.91 o 91 é
 MIN = Minimo ex: Min(qtDepontos)
 MAX = Maximo ex: Max(qtDepontos)
 
-GROUP BY IdProduto = Agrupar Por IdProduto filtrando todos os repetidos
+GROUP BY IdProduto = ele é o cara que pega os milhares de recibos do mês e organiza nas "pastinhas" de cada cliente.
+Ele "espremeu" os dados para que o SUM calcule o total de pontos de cada pessoa individualmente, e o COUNT conte quantas vezes cada pessoa passou no caixa.
+
+HAVING = Filtra (Where do GROUP BY) ele filtra depois do GROUP BY
