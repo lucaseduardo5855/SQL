@@ -51,3 +51,5 @@ Round = ARREDONDANR EX: Round(avg(qtDepontos),2) = arredonda para 433.91 o 91 é
 
 MIN = Minimo ex: Min(qtDepontos)
 MAX = Maximo ex: Max(qtDepontos)
+
+GROUP BY IdProduto = Agrupar Por IdProduto filtrando todos os repetidos
