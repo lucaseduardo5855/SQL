@@ -23,6 +23,7 @@ ORDER BY ASC = Ordenado crescente (mais antigo pro mais novo)
 CASE = Caso (Gera uma coluna nova)
 WHEN = Quando
 THEN = Então
+WHERE = Onde
 
 AGREGAÇÃO = Contagem, média, variância, minimo, máximo, etc
 Contagem de linha: count(*) = quantas linhas tem numa tabela?
