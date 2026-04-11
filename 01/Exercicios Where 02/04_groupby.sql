@@ -6,8 +6,6 @@ WHERE DescCategoriaProduto = 'rpg';
 
 
 SELECT DescCategoriaProduto,
-       count(*)
-
-FROM produtos
-
+count(*)
+From produtos
 GROUP BY DescCategoriaProduto;
