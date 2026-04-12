@@ -1,9 +1,10 @@
 -- Qual o produto mais transicionado?
 
-SELECT IdProduto, 
-       count(*) as TransicaoProduto
+SELECT IdProduto,
+       count(*)
 
-FROM transacao_produto
+ FROM transacao_produto
 
-GROUP BY IdProduto
-ORDER BY count(*) DESC
+ GROUP BY IdProduto
+ ORDER BY count(*) DESC
+
