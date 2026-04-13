@@ -57,3 +57,8 @@ GROUP BY IdProduto = ele é o cara que pega os milhares de recibos do mês e org
 Ele "espremeu" os dados para que o SUM calcule o total de pontos de cada pessoa individualmente, e o COUNT conte quantas vezes cada pessoa passou no caixa.
 
 HAVING = Filtra (Where do GROUP BY) ele filtra depois do GROUP BYG
+
+LEFT JOIN = Tela principal da esquerda ele tenta buscar as informações que batem com a dela, caso não tenha é nulo
+ex: Select * FROM vendas LEFT JOIN clientes on IDcliente
+
+INNER JOIN = Match de 100% se tiver valor nulo ele APAGA
