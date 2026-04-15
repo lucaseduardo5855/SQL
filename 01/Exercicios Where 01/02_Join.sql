@@ -16,4 +16,6 @@ WHERE t1.DtCriacao >= '2024-01-01' AND t1.DtCriacao < '2025-01-01'
 -- AND t3.DescCategoriaProduto = 'lovers'
 
 GROUP BY t3.DescCategoriaProduto 
+HAVING count(t1.IdTransacao) < 1000
+
 ORDER BY QtTransacao DESC
