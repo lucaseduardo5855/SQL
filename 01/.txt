@@ -62,3 +62,7 @@ LEFT JOIN = Tela principal da esquerda ele tenta buscar as informações que bat
 ex: Select * FROM vendas LEFT JOIN clientes on IDcliente
 
 INNER JOIN = Match de 100% se tiver valor nulo ele APAGA
+
+RIGHT JOIN = Tela principal refencia é da direita ele tenta buscar as informações que batem com a dela, caso não tenha é nulo 
+
+ON = Conexão tem nas 2 tabelas por exemplo
