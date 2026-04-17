@@ -16,3 +16,5 @@ WHERE DescCategoriaProduto = 'lovers'
 
 GROUP BY t1.IdCliente
 ORDER BY TotalPontosLovers ASC
+
+limit 5
