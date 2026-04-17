@@ -1,8 +1,8 @@
 -- Quais cliente assinaram lista de presença 25/08/25
 
 SELECT 
-t1.idCliente,
-count(*)
+      t1.idCliente,
+      count(*)
 
 FROM transacoes AS t1
 
