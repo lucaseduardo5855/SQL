@@ -1,0 +1,1 @@
+-- quais clientes assinaram a lista de presença 205/08/25

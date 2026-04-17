@@ -15,3 +15,4 @@ ON t2.IdProduto = t3.IdProduto
 WHERE DescNomeProduto = 'Lista de presença'
 
 GROUP BY anoMes
+ORDER BY QtPresença DESC
