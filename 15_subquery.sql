@@ -13,6 +13,3 @@ WHERE t1.idCliente IN (
 AND substr(t1.DtCriacao, 1, 10) = '2025-08-29'
 ;
 
-SELECT count(DISTINCT idCliente)
-FROM transacoes
-WHERE substr(DtCriacao, 1,10) = '2025-08-25';
