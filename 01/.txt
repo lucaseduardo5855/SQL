@@ -66,3 +66,6 @@ INNER JOIN = Match de 100% se tiver valor nulo ele APAGA
 RIGHT JOIN = Tela principal refencia é da direita ele tenta buscar as informações que batem com a dela, caso não tenha é nulo 
 
 ON = Conexão tem nas 2 tabelas por exemplo
+
+CTE = Começa com WITH colocando o nome doq vc quer representar ex: tb_cliente_primeiro_dia e pode ir adicionando outras finitas e por ultimo, você tem o cruzamento. com LEFT JOIN etc.
+
