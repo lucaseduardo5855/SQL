@@ -18,8 +18,17 @@ SELECT *,
         lag(dtDia) OVER (PARTITION BY idCliente ORDER BY dtDia) AS lagDia
 FROM cliente_dia
 
-)
+),
+
+tb_diff_dt AS (
 
 SELECT *,
         julianday(lagDia)- julianday(dtDia) AS DtDif
 from tb_lag
+
+)
+
+SELECT idCliente, avg(DtDif)
+
+from tb_diff_dt
+GROUP BY idCliente
