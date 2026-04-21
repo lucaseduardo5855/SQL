@@ -69,4 +69,8 @@ ON = Conexão tem nas 2 tabelas por exemplo
 
 CTE = Começa com WITH colocando o nome doq vc quer representar ex: tb_cliente_primeiro_dia e pode ir adicionando outras finitas e por ultimo, você tem o cruzamento. com LEFT JOIN etc.
 
-Windows Function = Função que olha para uma "janela" de dados para fazer contas sem comprimir a tabela. Ela é dividida em três pilares dentro do OVER (): PARTITION BY e ORDER BY 
+Windows Function = Função que olha para uma "janela" de dados para fazer contas sem comprimir a tabela. Ela é dividida em três pilares dentro do OVER (): PARTITION BY 
+
+LAG em windowF (Espelho Retrovisor) =  Ele puxa o valor exato da linha ANTERIOR para a linha atual.
+É perfeito para colocar o dado de "hoje" lado a lado com o dado de "ontem" e calcular métricas de crescimento ou queda
+como sabemos quando você precisa comparar o acesso de hoje com o acesso de ontem para ver se a plataforma cresceu ou caiu? COM LAG
