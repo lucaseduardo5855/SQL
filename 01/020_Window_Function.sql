@@ -1,34 +1,31 @@
 -- De quanto em quanto tempo o pessoal volta para ver o Curso SQL?
 
-WITH cliente_dia AS ( 
+WITH tb_dia_cliente AS (
 
-  SELECT 
-        DISTINCT idCliente, 
-        substr(DtCriacao, 1,10) AS dtDia
+SELECT 
+      IdCliente,
+      substr(DtCriacao, 1, 10) AS DtDia,
+      COUNT(DISTINCT idTransacao) AS QtTransacoes
 
-  FROM transacoes
-  WHERE substr(DtCriacao, 1,4) = '2025'
-  ORDER BY IdCliente, dtDia
+ from transacoes
+
+WHERE DtCriacao >= '2025-08-25' 
+AND DtCriacao < '2025-08-30' 
+
+GROUP BY idCliente, DtDia
 
 ),
 
 tb_lag AS (
 
-SELECT *,
-        lag(dtDia) OVER (PARTITION BY idCliente ORDER BY dtDia) AS lagDia
-FROM cliente_dia
+  SELECT *,
+          sum(QtTransacoes) OVER (PARTITION BY idCliente ORDER BY DtDia) AS AcumuladorTran,
+          lag(QtTransacoes) OVER (PARTITION BY idCliente ORDER BY DtDia) AS LagTransac
 
-),
-
-tb_diff_dt AS (
-
-SELECT *,
-        julianday(lagDia)- julianday(dtDia) AS DtDif
-from tb_lag
+from tb_dia_cliente
 
 )
 
-SELECT idCliente, avg(DtDif)
-
-from tb_diff_dt
-GROUP BY idCliente
+SELECT *, 
+        1.* QtTransacoes / LagTransac
+FROM tb_lag

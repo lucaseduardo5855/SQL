@@ -21,7 +21,6 @@ SELECT *,
         lag(qtTransacao) OVER (PARTITION BY IdCliente ORDER BY DtDia) AS LagTransacao
  
 FROM tb_cliente_dia
-
 )
 
 SELECT *,
