@@ -25,9 +25,16 @@ GROUP BY t1.idCliente, substr(t2.DtCriacao, 1, 10)
 
 ORDER BY t1.idCliente, DtDia
 
-)
+),
+
+tb_rn AS (
 
 SELECT *,
-        row_number() OVER (PARTITION BY idCliente ORDER BY qtIntr DESC) AS rn
+        row_number() OVER (PARTITION BY idCliente ORDER BY qtIntr DESC, DtDia) AS rn
 
 FROM tb_dia_cliente
+
+)
+
+SELECT * FROM tb_rn 
+WHERE rn = 1
