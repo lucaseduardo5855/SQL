@@ -1,0 +1,1 @@
+-- Qual é o dia com maior engajamento de cada aluno que iniciou o curso no dia 01

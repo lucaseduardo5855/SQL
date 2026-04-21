@@ -69,3 +69,4 @@ ON = Conexão tem nas 2 tabelas por exemplo
 
 CTE = Começa com WITH colocando o nome doq vc quer representar ex: tb_cliente_primeiro_dia e pode ir adicionando outras finitas e por ultimo, você tem o cruzamento. com LEFT JOIN etc.
 
+Windows Function = 

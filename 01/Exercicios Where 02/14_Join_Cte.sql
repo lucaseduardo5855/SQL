@@ -18,7 +18,7 @@ tb_engajamento AS (
          substr(DtCriacao, 1,10) AS Dia,
          count(DISTINCT IdTransacao) AS QtEngajamento
   FROM transacoes
-  WHERE substr(DtCriacao, 1,10) >= '2025-08-25' AND substr(DtCriacao, 1,10) <= '2025-08-29' 
+  WHERE substr(DtCriacao, 1,10) >= '2025-08-25' AND substr(DtCriacao, 1,10) <= '2025-08-30' 
 
 GROUP BY idCliente, Dia
 
@@ -35,3 +35,4 @@ SELECT
   ON t1.idCliente = t2.idCliente
 
   GROUP BY t1.idCliente
+  ORDER BY MaxEngajamento DESC 
