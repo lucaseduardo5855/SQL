@@ -24,5 +24,14 @@ GROUP BY idCliente, Dia
 
 )
 
-SELECT * from tb_id_diaUm AS t1 INNER JOIN tb_engajamento AS t2
-ON t1.idCliente = t2.idCliente
+SELECT
+       t1.idCliente,
+       t2.Dia, 
+       MAX(t2.QtEngajamento) AS MaxEngajamento
+
+  from tb_id_diaUm AS t1 
+  INNER JOIN
+  tb_engajamento AS t2
+  ON t1.idCliente = t2.idCliente
+
+  GROUP BY t1.idCliente
