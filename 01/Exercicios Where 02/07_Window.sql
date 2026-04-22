@@ -8,10 +8,18 @@ SELECT idCliente,
 
 from transacoes
 
-GROUP BY idCliente, DtDiaSemana
+GROUP BY IdCliente, DtDiaSemana
+
+),
+
+tb_rn AS (
+
+SELECT *, 
+        row_number() OVER (PARTITION BY idCliente ORDER BY QtTransacao) AS DiaMaisAtivo
+
+FROM tb_cliente_semana
+
 )
 
-SELECT *,
-        row_number() OVER (PARTITION BY idCliente ORDER BY QtTransacao DESC) AS rn
-
- FROM tb_cliente_semana
+SELECT * FROM tb_rn
+WHERE DiaMaisAtivo = 1
