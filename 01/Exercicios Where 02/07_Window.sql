@@ -15,6 +15,16 @@ GROUP BY IdCliente, DtDiaSemana
 tb_rn AS (
 
 SELECT *, 
+        CASE 
+            WHEN DtDiaSemana = '1' THEN 'SEGUNDA'
+            WHEN DtDiaSemana = '2' THEN 'TERÇA'
+            WHEN DtDiaSemana = '3' THEN 'QUARTA'
+            WHEN DtDiaSemana = '4' THEN 'QUINTA'
+            WHEN DtDiaSemana = '5' THEN 'SEXTA'
+            WHEN DtDiaSemana = '6' THEN 'SABADO'
+            ELSE 'DOMINGO'
+            END AS descDiaSemana,
+
         row_number() OVER (PARTITION BY idCliente ORDER BY QtTransacao) AS DiaMaisAtivo
 
 FROM tb_cliente_semana
