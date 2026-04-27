@@ -76,3 +76,10 @@ LAG em windowF (Espelho Retrovisor) =  Ele puxa o valor exato da linha ANTERIOR 
 como sabemos quando você precisa comparar o acesso de hoje com o acesso de ontem para ver se a plataforma cresceu ou caiu? COM LAG
 
 ROW_NUMBER = É o distribuidor de senhas. Ele cria uma coluna nova numerando as linhas (1, 2, 3...) seguindo a ordem que definimos. Perfeito para descobrir o "Top 1" de alguma coisa.
+
+DROP TABLE e CREATE TABLE
+
+TRUNCATE = Consegue usar ele para limpar a table toda 
+DELETE = Limpa a table toda também
+
+INSERT = Adiciona novas linhas de dados (informações) dentro de uma tabela que já foi criada.
