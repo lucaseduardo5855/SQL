@@ -1,0 +1,89 @@
+--LIKE 'Bota%' = Inicia com Bota
+--LIKE '%ava' = termina com ava
+
+-- not like '%chapeu%' = Pego tudo menos chapeu
+
+IN = Seleciona varias colunas
+
+OR = Seleciona varias Colunas tb e filtra 
+ex: --WHERE DescNomeProduto = 'Botas de Força'OR DescNomeProduto = 'Botas de Lava' OR DescNomeProduto = 'Botas de Veludo'
+
+Podemos usar para Maior Igual o >= ou tb > 
+
+AS = Renomear 
+
+substr = Pega de uma posição até outra posição exemplo DtCriacao,1,10 
+
+strftime = Pega mediante a documentação especificação de data ex: Mês do dado, o dia da semana daquele dado
+
+ORDER BY = Ordenando pelo 
+ORDER BY DESC = Ordenado descrente (Mais novo pro mais antigo)
+ORDER BY ASC = Ordenado crescente (mais antigo pro mais novo)
+
+CASE = Caso (Gera uma coluna nova)
+WHEN = Quando
+THEN = Então
+WHERE = Onde
+
+AGREGAÇÃO = Contagem, média, variância, minimo, máximo, etc
+Contagem de linha: count(*) = quantas linhas tem numa tabela?
+Contagem de linha distintas: count(distinc column)
+Soma: sum(column)
+Média: avg(column)
+Máximo: max(column)
+
+DISTINCT = Olha para todas as colunas e traz apenas valores distintos
+resumindo: ignora repetições antes de fazer contagem
+ex: 09_count_distinct
+
+SUM = Soma (espreme o dado) por exemplo temos um case e usamos SUM para espremer os dados
+10_sum.sql 
+
+COUNT (Contagem): Ex: quantas vezes (quantas linhas da tabela) o seu "segurança" deixou passar uma pontuação menor que zero. Resultado: aconteceram 522 transações negativas no mês.
+
+Quer saber quantas pessoas preencheram um dado específico? COUNT(coluna) (Ignora NULL).
+
+Quer saber o tamanho total da sua tabela (quantos registros existem no total)? COUNT(*) (Conta tudo, não foge de NULL).
+
+AVG = Média de cada linha 
+é a mesma coisa de pegar Sum(qtDepontos) / Count(IdCliente)
+
+Round = ARREDONDANR EX: Round(avg(qtDepontos),2) = arredonda para 433.91 o 91 é o 2
+
+MIN = Minimo ex: Min(qtDepontos)
+MAX = Maximo ex: Max(qtDepontos)
+
+GROUP BY IdProduto = ele é o cara que pega os milhares de recibos do mês e organiza nas "pastinhas" de cada cliente.
+Ele "espremeu" os dados para que o SUM calcule o total de pontos de cada pessoa individualmente, e o COUNT conte quantas vezes cada pessoa passou no caixa.
+
+HAVING = Filtra (Where do GROUP BY) ele filtra depois do GROUP BYG
+
+LEFT JOIN = Tela principal da esquerda ele tenta buscar as informações que batem com a dela, caso não tenha é nulo
+ex: Select * FROM vendas LEFT JOIN clientes on IDcliente
+
+INNER JOIN = Match de 100% se tiver valor nulo ele APAGA
+
+RIGHT JOIN = Tela principal refencia é da direita ele tenta buscar as informações que batem com a dela, caso não tenha é nulo 
+
+JULIANDAY = Calcula dia corrido entre datas, horas, adicionar dias a uma data
+
+ON = Conexão tem nas 2 tabelas por exemplo
+
+CTE = Começa com WITH colocando o nome doq vc quer representar ex: tb_cliente_primeiro_dia e pode ir adicionando outras finitas e por ultimo, você tem o cruzamento. com LEFT JOIN etc.
+
+Windows Function = Função que olha para uma "janela" de dados para fazer contas sem comprimir a tabela. Ela é dividida em três pilares dentro do OVER (): PARTITION BY 
+
+LAG em windowF (Espelho Retrovisor) =  Ele puxa o valor exato da linha ANTERIOR para a linha atual.
+É perfeito para colocar o dado de "hoje" lado a lado com o dado de "ontem" e calcular métricas de crescimento ou queda
+como sabemos quando você precisa comparar o acesso de hoje com o acesso de ontem para ver se a plataforma cresceu ou caiu? COM LAG
+
+ROW_NUMBER = É o distribuidor de senhas. Ele cria uma coluna nova numerando as linhas (1, 2, 3...) seguindo a ordem que definimos. Perfeito para descobrir o "Top 1" de alguma coisa.
+
+DROP TABLE e CREATE TABLE
+
+TRUNCATE = Consegue usar ele para limpar a table toda 
+DELETE = Limpa a table toda também
+
+INSERT = Adiciona novas linhas de dados (informações) dentro de uma tabela que já foi criada.
+
+UPDATE = Alterar de fato o campo ou os campos, sempre utilizar com WHERE
