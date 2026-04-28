@@ -83,3 +83,5 @@ TRUNCATE = Consegue usar ele para limpar a table toda
 DELETE = Limpa a table toda também
 
 INSERT = Adiciona novas linhas de dados (informações) dentro de uma tabela que já foi criada.
+
+UPDATE = Alterar de fato o campo ou os campos

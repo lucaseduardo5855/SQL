@@ -1,3 +1,5 @@
+DELETE FROM relatorio_diario;
+ 
   WITH tb_diario AS (
 
   SELECT substr(DtCriacao, 1, 10) AS DtDia,
