@@ -87,3 +87,5 @@ DELETE = Limpa a table toda também
 INSERT = Adiciona novas linhas de dados (informações) dentro de uma tabela que já foi criada.
 
 UPDATE = Alterar de fato o campo ou os campos, sempre utilizar com WHERE
+
+CICLO = -> CRIA TABELA, LIMPA A TABELA, INSIRO OS DADOS, CONSULTO A TABELA. aula > 26_createl.sql
