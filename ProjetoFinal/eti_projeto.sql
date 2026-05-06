@@ -1,4 +1,6 @@
-/* Quantidade de transações Históricas (vida, d7, d14, d28, d56) */ 
+/* Quantidade de transações Históricas (vida, d7, d14, d28, d56) 
+   Dias desde a ultima transação
+*/ 
 
 WITH tb_transacoes AS (
 
@@ -16,7 +18,8 @@ SELECT idCliente,
        count(CASE WHEN diffDate <= 56 THEN IdTransacao END) AS QtTransacaoVida56D,
        count(CASE WHEN diffDate <= 28 THEN IdTransacao END) AS QtTransacaoVida28D,
        count(CASE WHEN diffDate <= 14 THEN IdTransacao END) AS QtTransacaoVida14D,
-       count(CASE WHEN diffDate <= 7 THEN IdTransacao END) AS QtTransacaoVida7D
+       count(CASE WHEN diffDate <= 7 THEN IdTransacao END) AS QtTransacaoVida7D,
+       min(diffDate) AS DiasUltimaInteração
 
 FROM tb_transacoes
 
