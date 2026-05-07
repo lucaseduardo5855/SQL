@@ -130,6 +130,34 @@ FROM tb_cliente_dia
 
 ),
 
+tb_cliente_periodo AS (
+
+SELECT 
+       idCliente,
+       CASE 
+         WHEN DtHora BETWEEN 7 and 12 THEN 'MANHA'
+         WHEN DtHora BETWEEN 13 and 18 THEN 'TARDE'
+         WHEN DtHora BETWEEN 19 and 23 THEN 'NOITE'
+         ELSE 'MADRUGADA'
+         END AS Periodo,
+         count(*) AS qtdeTransacao
+
+from tb_transacoes
+
+GROUP BY 1
+
+),
+
+
+tb_cliente_periodo_rn AS (
+
+SELECT *,
+       row_number() OVER (PARTITION BY idCliente ORDER BY qtdeTransacao DESC) AS rnPeriodo
+
+FROM tb_cliente_periodo 
+
+),
+
 tb_join AS (
 
 SELECT t1.*,
@@ -139,7 +167,8 @@ SELECT t1.*,
        t5.DescNomeProduto AS Produto28,
        t6.DescNomeProduto AS Produto14,
        t7.DescNomeProduto AS Produto7,
-       COALESCE(t8.DtDia, -1) AS DtDia
+       COALESCE(t8.DtDia, -1) AS DtDia,
+       t9.Periodo
 
 from tb_sumario_transacoes AS t1
 
@@ -170,34 +199,10 @@ LEFT JOIN tb_cliente_dia_rn AS t8
 on t1.idCliente = t8.idCliente
 AND t8.rnDia = 1
 
-),
-
-tb_cliente_periodo AS (
-
-SELECT 
-       idCliente,
-       CASE 
-         WHEN DtHora BETWEEN 7 and 12 THEN 'MANHA'
-         WHEN DtHora BETWEEN 13 and 18 THEN 'TARDE'
-         WHEN DtHora BETWEEN 19 and 23 THEN 'NOITE'
-         ELSE 'SEM INFORMAÇÃO'
-         END AS Periodo,
-         count(*) AS qtdeTransacao
-
-from tb_transacoes
-
-GROUP BY 1
-
-),
-
-tb_cliente_periodo_rn AS (
-
-SELECT *,
-       row_number() OVER (PARTITION BY idCliente ORDER BY qtdeTransacao DESC) AS rnPeriodo
-
-FROM tb_cliente_periodo 
+LEFT JOIN tb_cliente_periodo_rn AS t9
+ON t1.idCliente = t9.idCliente
+AND t9.rnPeriodo = 1
 
 )
 
-SELECT * FROM tb_cliente_periodo_rn
-
+select * from tb_join
