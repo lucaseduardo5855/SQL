@@ -89,3 +89,5 @@ INSERT = Adiciona novas linhas de dados (informações) dentro de uma tabela que
 UPDATE = Alterar de fato o campo ou os campos, sempre utilizar com WHERE
 
 CICLO = -> CRIA TABELA, LIMPA A TABELA, INSIRO OS DADOS, CONSULTO A TABELA. aula > 26_createl.sql
+
+COALESCE = Resumindo ele não deixa o resultado nulo, ele tem um valor padrão, ex: COALESCE(Valor, 0) = se o valor for nulo ele vai colocar -1 ou 0 

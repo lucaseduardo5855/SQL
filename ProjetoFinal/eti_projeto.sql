@@ -5,6 +5,8 @@
    - Pontos acumulados Positivos (vida, d7, d14, d28, d56)
    - Pontos acumulados Negativos (vida, d7, d14, d28, d56)
    - Dias da semana mais ativos (d28)
+   - Produtos mais usados (vida, d7, d14, d28, d56)
+   - Dia da semana mais ativo (d28)
 */ 
 
 WITH tb_transacoes AS (
@@ -104,6 +106,28 @@ FROM tb_cliente_produto
 
 ),
 
+tb_cliente_dia AS (
+
+SELECT idCliente, 
+       strftime('%w', DtCriacao) AS DtDia,
+       count(*) AS qtdTransacao
+ 
+FROM tb_transacoes
+
+WHERE diffDate <= 300
+GROUP BY idCliente, DtDia
+
+),
+
+tb_cliente_dia_rn AS ( 
+
+SELECT *,
+        row_number () OVER (PARTITION BY idCliente ORDER BY qtdTransacao) AS rnDia
+
+FROM tb_cliente_dia
+
+),
+
 tb_join AS (
 
 SELECT t1.*,
@@ -112,7 +136,8 @@ SELECT t1.*,
        t4.DescNomeProduto AS Produto56,
        t5.DescNomeProduto AS Produto28,
        t6.DescNomeProduto AS Produto14,
-       t7.DescNomeProduto AS Produto7
+       t7.DescNomeProduto AS Produto7,
+       COALESCE(t8.DtDia, -1) AS DtDia
 
 from tb_sumario_transacoes AS t1
 
@@ -139,8 +164,10 @@ LEFT JOIN tb_cliente_produto_rn AS t7
 ON t1.idCliente = t7.idCliente
 AND t7.rnVida7 = 1
 
+LEFT JOIN tb_cliente_dia_rn AS t8
+on t1.idCliente = t8.idCliente
+AND t8.rnDia = 1
+
 )
 
-SELECT * FROM tb_join 
-ORDER BY idCliente
-
+SELECT * from tb_join
