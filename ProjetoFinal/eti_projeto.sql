@@ -57,17 +57,6 @@ SELECT idCliente,
   GROUP BY idCliente
 ),
 
-tb_join AS (
-
-SELECT t1.*,
-       t2.IdadeBase
-
-from tb_sumario_transacoes AS t1
-LEFT JOIN tb_cliente AS t2
-on t1.idCliente = t2.idCliente
-
-),
-
 tb_transacao_produto AS (
 
 SELECT t1.*,
@@ -82,13 +71,76 @@ ON t1.IdTransacao = t2.IdTransacao
 LEFT JOIN produtos AS t3
 ON t2.IdProduto = t3.IdProduto 
 
-)
+),
+
+
+tb_cliente_produto AS (
 
 SELECT idCliente,
        DescNomeProduto, 
        count(*) AS QtdeVida,
-       count( CASE WHEN diffDate <= 56 THEN IdTransacao END) AS QtdeVida56
+       count( CASE WHEN diffDate <= 56 THEN IdTransacao END) AS QtdeVida56,
+       count( CASE WHEN diffDate <= 28 THEN IdTransacao END) AS QtdeVida28,
+       count( CASE WHEN diffDate <= 14 THEN IdTransacao END) AS QtdeVida14,
+       count( CASE WHEN diffDate <= 7 THEN IdTransacao END) AS QtdeVida7
 
 FROM tb_transacao_produto
 
 GROUP BY idCliente, DescNomeProduto
+
+),
+
+tb_cliente_produto_rn AS (
+
+SELECT *,
+        row_number( ) OVER (PARTITION BY idCliente ORDER BY QtdeVida DESC) AS rnVida,
+        row_number( ) OVER (PARTITION BY idCliente ORDER BY QtdeVida56 DESC) AS rnVida56,
+        row_number( ) OVER (PARTITION BY idCliente ORDER BY QtdeVida28 DESC) AS rnVida28,
+        row_number( ) OVER (PARTITION BY idCliente ORDER BY QtdeVida14 DESC) AS rnVida14,
+        row_number( ) OVER (PARTITION BY idCliente ORDER BY QtdeVida7 DESC) AS rnVida7
+
+
+FROM tb_cliente_produto
+
+),
+
+tb_join AS (
+
+SELECT t1.*,
+       t2.IdadeBase,
+       t3.DescNomeProduto AS ProdutoVida,
+       t4.DescNomeProduto AS Produto56,
+       t5.DescNomeProduto AS Produto28,
+       t6.DescNomeProduto AS Produto14,
+       t7.DescNomeProduto AS Produto7
+
+from tb_sumario_transacoes AS t1
+
+LEFT JOIN tb_cliente AS t2
+on t1.idCliente = t2.idCliente
+
+LEFT JOIN tb_cliente_produto_rn AS t3
+ON t1.idCliente = t3.idCliente
+AND t3.rnVida = 1
+
+LEFT JOIN tb_cliente_produto_rn AS t4
+ON t1.idCliente = t4.idCliente
+AND t4.rnVida56 = 1
+
+LEFT JOIN tb_cliente_produto_rn AS t5
+ON t1.idCliente = t5.idCliente
+AND t5.rnVida28 = 1
+
+LEFT JOIN tb_cliente_produto_rn AS t6
+ON t1.idCliente = t6.idCliente
+AND t6.rnVida14 = 1
+
+LEFT JOIN tb_cliente_produto_rn AS t7
+ON t1.idCliente = t7.idCliente
+AND t7.rnVida7 = 1
+
+)
+
+SELECT * FROM tb_join 
+ORDER BY idCliente
+
