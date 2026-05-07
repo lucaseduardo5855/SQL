@@ -7,6 +7,7 @@
    - Dias da semana mais ativos (d28)
    - Produtos mais usados (vida, d7, d14, d28, d56)
    - Dia da semana mais ativo (d28)
+   - Periodo mais ativo
 */ 
 
 WITH tb_transacoes AS (
@@ -15,7 +16,8 @@ SELECT IdTransacao,
        idCliente, 
        QtdePontos,
        datetime(substr(DtCriacao,1,19)) AS dtCriacao,
-       julianday('now') - julianday(substr(DtCriacao,1,10)) AS diffDate
+       julianday('now') - julianday(substr(DtCriacao,1,10)) AS diffDate,
+       CAST(strftime('%H', DtCriacao) AS INT) AS DtHora
 
   from transacoes
 ),
@@ -168,6 +170,34 @@ LEFT JOIN tb_cliente_dia_rn AS t8
 on t1.idCliente = t8.idCliente
 AND t8.rnDia = 1
 
+),
+
+tb_cliente_periodo AS (
+
+SELECT 
+       idCliente,
+       CASE 
+         WHEN DtHora BETWEEN 7 and 12 THEN 'MANHA'
+         WHEN DtHora BETWEEN 13 and 18 THEN 'TARDE'
+         WHEN DtHora BETWEEN 19 and 23 THEN 'NOITE'
+         ELSE 'SEM INFORMAÇÃO'
+         END AS Periodo,
+         count(*) AS qtdeTransacao
+
+from tb_transacoes
+
+GROUP BY 1
+
+),
+
+tb_cliente_periodo_rn AS (
+
+SELECT *,
+       row_number() OVER (PARTITION BY idCliente ORDER BY qtdeTransacao DESC) AS rnPeriodo
+
+FROM tb_cliente_periodo 
+
 )
 
-SELECT * from tb_join
+SELECT * FROM tb_cliente_periodo_rn
+

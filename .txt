@@ -91,3 +91,10 @@ UPDATE = Alterar de fato o campo ou os campos, sempre utilizar com WHERE
 CICLO = -> CRIA TABELA, LIMPA A TABELA, INSIRO OS DADOS, CONSULTO A TABELA. aula > 26_createl.sql
 
 COALESCE = Resumindo ele não deixa o resultado nulo, ele tem um valor padrão, ex: COALESCE(Valor, 0) = se o valor for nulo ele vai colocar -1 ou 0 
+
+BETWEEN = Entre (BETWEEN 1 AND 10) = Entre 1 e 10
+
+CAST = Transforma um tipo de dado em outro tipo de dado, ex: CAST(DtCriacao AS DATE) = transforma a data e hora em data apenas ou 
+CAST AS INT = transforma o dado em numero inteiro
+
+
