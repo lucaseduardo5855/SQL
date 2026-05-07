@@ -7,7 +7,8 @@
    - Dias da semana mais ativos (d28)
    - Produtos mais usados (vida, d7, d14, d28, d56)
    - Dia da semana mais ativo (d28)
-   - Periodo mais ativo
+   - Periodo mais ativo 
+   - Engajamento em D28 versus Vida
 */ 
 
 WITH tb_transacoes AS (
@@ -144,7 +145,7 @@ SELECT
 
 from tb_transacoes
 
-GROUP BY 1
+GROUP BY 1,2
 
 ),
 
@@ -205,4 +206,7 @@ AND t9.rnPeriodo = 1
 
 )
 
-select * from tb_join
+SELECT *,
+        1. * QtTransacaoVida28D / QtTransacaoVida AS engajamento28Vida
+
+FROM tb_join
