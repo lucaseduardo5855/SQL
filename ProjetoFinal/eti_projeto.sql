@@ -1,16 +1,18 @@
-/* - Quantidade de transações Históricas (vida, d7, d14, d28, d56) 
-   - Dias desde a ultima transação
-   - Idade na Base
-   - Saldo de pontos atual
-   - Pontos acumulados Positivos (vida, d7, d14, d28, d56)
-   - Pontos acumulados Negativos (vida, d7, d14, d28, d56)
-   - Dias da semana mais ativos (d28)
-   - Produtos mais usados (vida, d7, d14, d28, d56)
-   - Dia da semana mais ativo (d28)
-   - Periodo mais ativo 
-   - Engajamento em D28 versus Vida
-   - bonus: Transacoes abaixo de agosto
-*/ 
+-- /* - Quantidade de transações Históricas (vida, d7, d14, d28, d56) 
+--    - Dias desde a ultima transação
+--    - Idade na Base
+--    - Saldo de pontos atual
+--    - Pontos acumulados Positivos (vida, d7, d14, d28, d56)
+--    - Pontos acumulados Negativos (vida, d7, d14, d28, d56)
+--    - Dias da semana mais ativos (d28)
+--    - Produtos mais usados (vida, d7, d14, d28, d56)
+--    - Dia da semana mais ativo (d28)
+--    - Periodo mais ativo 
+--    - Engajamento em D28 versus Vida
+--    - bonus: Transacoes abaixo de agosto
+-- */ 
+
+-- CREATE TABLE feature_store_cliente AS
 
 -- WITH tb_transacoes AS (
 
@@ -18,18 +20,18 @@
 --        idCliente, 
 --        QtdePontos,
 --        datetime(substr(DtCriacao,1,19)) AS dtCriacao,
---        julianday('now') - julianday(substr(DtCriacao,1,10)) AS diffDate,
+--        julianday('2025-06-01') - julianday(substr(DtCriacao,1,10)) AS diffDate,
 --        CAST(strftime('%H', DtCriacao) AS INT) AS DtHora
 
 --   from transacoes
---   WHERE DtCriacao < '2025-07-01'
+--   WHERE DtCriacao < '2025-06-01'
 -- ),
 
 -- tb_cliente AS (
   
 --   SELECT idCliente,
 --          datetime(substr(DtCriacao,1,19)) AS dtCriacao,
---          julianday('now') - julianday(substr(DtCriacao,1,10)) AS IdadeBase
+--          julianday('2025-07-01') - julianday(substr(DtCriacao,1,10)) AS IdadeBase
 
 --   From clientes
 -- ),
@@ -205,13 +207,14 @@
 
 -- )
 
--- INSERT INTO tb_feature_store_cliente
+-- INSERT INTO feature_store_cliente
 
 -- SELECT 
---         '2025-07-01' AS dtRef,
+--         '2025-06-01' AS dtRef,
 --         *,
 --         1. * QtTransacaoVida28D / QtTransacaoVida AS engajamento28Vida
 
 -- FROM tb_join
 
-SELECT * FROM tb_feature_store_cliente
+SELECT * from feature_store_cliente
+ORDER BY idCliente, dtRef
